@@ -8,6 +8,8 @@ A User can find the calories for a food item and add it to their calorie count u
 ## What's in here?
 This repo contains the code for the Front-End Webpage, Web Service API, Image classification using CNN, and the Alexa lambda function for alexa skills.
 
+( Note: Our pretrained model file can be found at: https://drive.google.com/open?id=1u317FicYXRoL4QPXVAZwn6maTu8n_S5U )
+
 ## Overview of how it works?
 1. The Webpage is where the user has the functionality to take a picture of the food item.
 2. This image is sent asynchronously to our API
