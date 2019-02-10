@@ -22,3 +22,10 @@ This repo contains the code for the Front-End Webpage, Web Service API, Image cl
 2. Make sure the server has all the required libraries and languages support used here. I may upload an extensive wiki documentation for the same later.
 3. Start the web service api using python command.
 4. Access the web page and you can start to use it.
+
+## Contributor
+
+1. Gaurav Agarwal
+2. Hiten Nirmal- hitennirmal94@gmail.com
+3. Tusharika Mishra
+4. Niyati Shah
