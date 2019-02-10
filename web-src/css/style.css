@@ -24,7 +24,7 @@
     margin: 5px;
 }
 
-video, img {
+video, #screenshotPreview {
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
@@ -48,4 +48,23 @@ video, img {
 
 .hh-cover-full{
     width: 100%;
+    height: 100%;
+}
+
+#loading_image {
+    background: rgba(255, 255, 255, 1);
+    display: none;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    align-content: center;
+}
+
+#loading_image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    padding-top: 30vh;
 }

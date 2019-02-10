@@ -4,26 +4,24 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS, cross_origin
 import base64
 import json
-# from datetime import datetime
+
 import numpy as np
 import cv2
 import scipy
 from keras.models import load_model
 import tensorflow as tf
+
 import subprocess
 
 app = Flask(__name__)
-# CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)
-# CORS(app, support_credentials=True)
 
 _score_thresh = 0.27
 
-
+# load the pre-trained Image classification model
 def init():
     global model, graph, jsonFile
-    # load the pre-trained Image classification model
     print('Loading model...')
     model = load_model('../image_classification/simple_model_v2.h5')
     print('model loaded')
@@ -31,8 +29,6 @@ def init():
     jsonFile = "data/foodDetails.json"
 
 # Cross origin support
-
-
 def sendResponse(responseObj):
     response = jsonify(responseObj)
     # response.headers.add('Access-Control-Allow-Origin', '*')
@@ -42,8 +38,6 @@ def sendResponse(responseObj):
     return response
 
 # The Image classification method
-
-
 def get_pred(imagePath):
     img_file = cv2.imread(imagePath)
     X = []
@@ -59,17 +53,16 @@ def get_pred(imagePath):
     with graph.as_default():
         y_pred = model.predict(X_train)
     Y_pred_classes = np.argmax(y_pred, axis=1)
-
+    ACCURACY = y_pred[0][Y_pred_classes[0]] * 100
+    print("ACCURACY: ", ACCURACY)
     map_characters = {1: 'coke', 2: 'doritos',
                       3: 'protein_bar', 4: 'lays', 5: 'fruit_snack'}
     prediction = map_characters.get(Y_pred_classes[0])
-    print(prediction)
+    print("Prediction: ", prediction)
     return prediction
 
 # API for classification
 @app.route('/trackCalorie', methods=['POST'])
-# @cross_origin(supports_credentials=True)
-# @crossdomain(origin='*')
 def upload_base64_img():
 
     content = request.get_json()
@@ -83,7 +76,6 @@ def upload_base64_img():
     filename = 'imgReceived/foodItem_image.jpg'
     with open(filename, 'wb') as f:
         f.write(imgdata)
-    # print("--------------------->>>>>>", filename)
     foodItem = get_pred(filename)
     # getting details of food item from the json file
     with open(jsonFile, "r") as dataFile:
@@ -116,7 +108,7 @@ def increaseConsumption():
     # calling AWS to upload the json file
     subprocess.run(["aws", "s3", "cp", jsonFile, "s3://cal-count/"])
     # returning response to client
-    return sendResponse({"success":"Ok"})
+    return sendResponse({"success": "Ok"})
 
 
 # if this is the main thread of execution first load the model and then start the server

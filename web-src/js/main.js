@@ -96,7 +96,7 @@ function resetFields() {
     $('#recognizedFood').text("");
     $('#itemCalories').text("");
     $('#count').text("");
-    $('#totalCalories').text("");
+    // $('#totalCalories').text("");
     getWebcamFeed();
 }
 
@@ -116,8 +116,12 @@ function consumeItem() {
         crossDomain: true,
         contentType: 'application/json; charset=utf-8',
         success: function () {
-            alert("Successfully added");
+            // alert("Successfully added");
+            $('#loading_image').fadeIn();
             resetFields();
+            setTimeout(function(){
+                $('#loading_image').fadeOut();
+            },1700)
         },
         error: ajaxFailure
     });
@@ -125,7 +129,7 @@ function consumeItem() {
 
 /**
  * Calls web service over ajax to classify the image
- * @param {String} base64_img 
+ * @param {String} base64_img the image captured from the webcam
  */
 function sendImgToDetect(base64_img) {
     base64_img = base64_img.replace('data:image/jpeg;base64,', '');
