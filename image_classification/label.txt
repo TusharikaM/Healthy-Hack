@@ -1,0 +1,6 @@
+Label,  Name
+n0   , coke 
+n1   , doritos 
+n2   , kind_protein_bar    
+n3   , lays_classic     
+n4   , welch_fruit_snack  
