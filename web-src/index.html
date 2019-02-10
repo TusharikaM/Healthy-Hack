@@ -1,0 +1,93 @@
+<!---------------------------------------
+@author: Gaurav Agarwal
+@description: The web page for the sign-language-detection app.
+@Date: 1st Dec 2018.
+----------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Calorie monitor">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Calorie, calories, counter, track, monitor, health, classification, image, data, analysis, neural, network, machine, learning, data, analytics">
+
+    <title>Healthy-Hack</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body onload="checkBrowserSupport()">
+    <!-- <div id="loading_image">
+        <img src="images/page_loading.gif" />
+    </div> -->
+    <!-- script including header/footer -->
+    <!-- <script src="libraries/w3.js"></script> -->
+    <!-- <div w3-include-html="header.html"></div> -->
+    <!-- <script>w3.includeHTML();</script> -->
+
+    <h2 class="page-heading" style="text-align: center">Healthy-Hack</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Cam Input</h5>
+                        <p class="card-text"><small class="text-muted">Take photo of a food item</small></p>
+                    </div>
+                    <video class="card-img-bottom" autoplay alt="Camera feed"></video>
+                    <img id="screenshotPreview" src="" alt="screenshot Preview"/>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="card text-white bg-dark hh-cover-full">
+                        <div class="card-header">Food item details</div>
+                        <div class="card-body">
+                            <h3 class="card-title text-center" id="recognizedFood"></h3>
+                            <div class="card-text">
+                                <p>Calories: <span id="itemCalories"></span></p>
+                                <p># consumed: <span id="count"></span></p>
+                                <p>Total Calories consumed: <span id="totalCalories"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <button type="button" class="btn btn-outline-primary" id="btnFindCal" onclick="showScreenshot()">Find calories</button>
+                <button type="button" class="btn btn-outline-dark" id="btnConsumeCal" onclick="consumeItem()">Consume it</button>
+            </div>
+            <div class="col-sm-6 text-center">
+                <button type="button" class="btn btn-light" onclick="resetFields()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Script for jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+</html>

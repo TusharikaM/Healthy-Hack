@@ -1,0 +1,51 @@
+/* 
+@author: Gaurav Agarwal
+@description: The main CSS file.
+@Date: 2nd Dec 2018. 
+*/
+
+.page-heading {
+    text-align: center;
+    padding: 15px;
+    background-color: #2870B8;
+    color: white;
+}
+
+.container {
+    margin-top : 3rem;
+}
+
+.row {
+    margin: 10px;
+}
+
+.btn {
+    width: 45%;
+    margin: 5px;
+}
+
+video, img {
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+    max-width: 100%;
+}
+
+/* #screenshot {
+    width: 100%;
+    height: auto;
+} */
+.card-img-bottom {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#recognizedLetter {
+    /* font-size: 5rem; */
+    text-align: center;
+}
+
+.hh-cover-full{
+    width: 100%;
+}
